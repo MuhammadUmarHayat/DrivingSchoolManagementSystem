@@ -1,0 +1,38 @@
+database=driving_schooldb
+
+Join query:
+SELECT packages.*,drivingschools.* FROM `packages`
+INNER JOIN   drivingschools on drivingschools.id=packages.schoolid where packages.schoolid=1
+
+
+
+SELECT ds.*, p.* FROM drivingschools ds JOIN packages p ON ds.id = p.schoolid WHERE p.id = 1;
+INSERT INTO `training_requests`( `schoolid`, `userid`, `pakageid`, `reqDate`, `status`)
+VALUES ('','','','','')
+...............................
+SELECT *
+FROM enrollments
+JOIN users ON enrollments.userid = users.userid
+JOIN drivingschools ON enrollments.schoolid = drivingschools.id
+JOIN packages ON enrollments.packageid = packages.id;
+........................
+SELECT *
+FROM enrollments
+JOIN users ON enrollments.userid = users.userid
+JOIN drivingschools ON enrollments.schoolid = drivingschools.id
+JOIN packages ON enrollments.packageid = packages.id
+WHERE enrollments.id = 1;
+...................................................
+
+
+SELECT tr.*,ds.*, p.* FROM `training_requests` tr
+JOIN `drivingschools` ds ON tr.`schoolid` = ds.`id`
+JOIN `packages` p ON tr.`pakageid` = p.`id` where tr.userid=''
+
+
+SELECT tr.`id` AS request_id, tr.`schoolid`, tr.`userid`, tr.`pakageid`, tr.`reqDate`, tr.`status` AS request_status,
+       ds.`id`, ds.`name` AS school_name, ds.`address`, ds.`contactno`, ds.`principal`, ds.`description` AS school_description, ds.`dom` AS school_dom, ds.`status` AS school_status, ds.`photo` AS school_photo,
+       p.`id` AS package_id, p.`title` AS package_title, p.`description` AS package_description, p.`price`, p.`duration`, p.`startingDate`, p.`endingDate`, p.`status` AS package_status, p.`photo` AS package_photo
+FROM `training_requests` tr
+JOIN `drivingschools` ds ON tr.`schoolid` = ds.`id`
+JOIN `packages` p ON tr.`pakageid` = p.`id`;
